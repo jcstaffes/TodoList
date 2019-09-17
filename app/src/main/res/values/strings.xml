@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">gp19s2</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">List</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Calendar</string>
+    <string name="title_item1">item1</string>
+    <string name="title_item2">item2</string>
+    <string name="title_item3">item3</string>
+    <string name="title_item4">item4</string>
 </resources>
