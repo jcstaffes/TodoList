@@ -8,4 +8,6 @@
     <string name="title_item3">item3</string>
     <string name="title_item4">item4</string>
     <string name="title_welcome">Welcome! \nThis is a todo list app which has below function:</string>
+    <string name="title_confirm">confirm</string>
+    <string name="title_cancel">cancel</string>
 </resources>
