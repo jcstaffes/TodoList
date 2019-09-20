@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
@@ -59,6 +60,21 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.topnav,menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item1:
+                Intent intent = new Intent(this,edit_or_add.class);
+                startActivity(intent);
+                break;
+            case R.id.item2:
+                Toast.makeText(this,"item2",Toast.LENGTH_LONG).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
