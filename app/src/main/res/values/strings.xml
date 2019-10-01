@@ -10,4 +10,13 @@
     <string name="title_welcome">Welcome! \nThis is a todo list app which has below function:</string>
     <string name="title_confirm">confirm</string>
     <string name="title_cancel">cancel</string>
+    <string name="title_edit">NEW TODO</string>
+    <string name="text_item1">TITLE</string>
+    <string name="edit_item1">What do you want to do?</string>
+    <string name="text_item2">DATE</string>
+    <string name="edit_item2">When does this isuue due?</string>
+    <string name="text_item3">Time</string>
+    <string name="edit_item3">What time does this isuue due?</string>
+    <string name="text_item4">Description</string>
+    <string name="edit_item4">What exactly will you need to do?</string>
 </resources>
