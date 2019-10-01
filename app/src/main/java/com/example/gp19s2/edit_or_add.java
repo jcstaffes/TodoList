@@ -19,10 +19,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class edit_or_add extends AppCompatActivity {
     private TextView mTextMessage;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_add);
+
+
     }
 
 
