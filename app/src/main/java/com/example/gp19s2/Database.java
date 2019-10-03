@@ -1,10 +1,14 @@
 package com.example.gp19s2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.sql.Time;
+import java.util.Date;
 
 public class Database extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="todo.db";
@@ -15,9 +19,9 @@ public class Database extends SQLiteOpenHelper {
     public static final String COL_4="TIME";
     public static final String COL_5="DESCRIPTION";
 
-    public Database(@Nullable Context context) {
+    public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db=this.getWritableDatabase();
+
     }
 
     @Override
@@ -31,4 +35,22 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
+    public boolean insert(String title,String date,String time, String DES ){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COL_2, title);
+        contentValues.put(COL_3, date);
+        contentValues.put(COL_4, time);
+        contentValues.put(COL_5, DES);
+        long result=db.insert(TABLE_NAME,null,contentValues);
+        db.close();
+        if (result!=-1){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
+

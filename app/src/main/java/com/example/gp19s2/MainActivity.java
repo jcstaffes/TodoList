@@ -22,8 +22,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
-    Database newDB;
-
+    Database database;
 
 
 
@@ -45,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        newDB = new Database(this);
+        database=new Database(this);
 
     }
 

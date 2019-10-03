@@ -31,7 +31,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
         <EditText
-            android:id="@+id/edit_item1"
+            android:id="@+id/TITLE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="text"
@@ -52,20 +52,23 @@
             android:textSize="20sp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
+
         <EditText
-            android:id="@+id/edit_item2"
+            android:id="@+id/DATE"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="date"
-            android:hint="@string/edit_item2"
+            android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/inputselected"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="20dp"
-            android:importantForAutofill="no"/>
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:hint="@string/edit_item2"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
         <TextView
             android:id="@+id/text_item3"
             android:layout_width="match_parent"
@@ -75,10 +78,12 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
         <EditText
-            android:id="@+id/edit_item3"
+            android:id="@+id/TIME"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="time"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
             android:hint="@string/edit_item3"
             android:layout_marginLeft="15dp"
             android:paddingLeft="5dp"
@@ -97,7 +102,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
         <EditText
-            android:id="@+id/edit_item4"
+            android:id="@+id/DESC"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="text"
