@@ -1,8 +1,13 @@
 package com.example.gp19s2;
 
+import android.app.usage.UsageEvents;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -20,8 +25,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
+
+    CompactCalendarView compactCalendar;
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -52,6 +64,37 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        final ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(false);
+        actionbar.setTitle(null);
+
+        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendar.setUseThreeLetterAbbreviation(true);
+
+        //Set an event
+        //Todo: read in an event title from database
+        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
+        compactCalendar.addEvent(ev1);
+
+        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+
+                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
+                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+
+            }
+        });
     }
 
 
@@ -78,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 
 }
