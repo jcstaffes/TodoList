@@ -103,7 +103,7 @@ public class edit_or_add extends AppCompatActivity  {
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
                 if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)) {
-                    Toast.makeText(edit_or_add.this, "Pleasr enter something", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(edit_or_add.this, "Please enter something", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Database db=new Database(this);
@@ -111,6 +111,7 @@ public class edit_or_add extends AppCompatActivity  {
                     if (add){
                         Intent intent=new Intent(edit_or_add.this,MainActivity.class);
                         intent.putExtra("Insert",1);
+                        Toast.makeText(edit_or_add.this, "data inserted", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                     else {

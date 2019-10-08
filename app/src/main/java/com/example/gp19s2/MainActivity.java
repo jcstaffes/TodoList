@@ -1,10 +1,13 @@
 package com.example.gp19s2;
 
+import android.app.AlertDialog;
 import android.app.usage.UsageEvents;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -45,7 +48,21 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    Cursor res = database.getList();
+                    if (res.getCount()==0){
+                        showList("Error","No data");
+                    }else{
+                        StringBuffer buffer = new StringBuffer();
+                        while(res.moveToNext()){
+                            buffer.append("Title: "+ res.getString(0)+"\n");
+                            buffer.append("Date: "+ res.getString(1)+"\n");
+                            buffer.append("Time: "+ res.getString(2)+"\n");
+                            buffer.append("Description: "+ res.getString(3)+"\n\n");
+
+                        }
+                        showList("Data",buffer.toString());
+                    }
+                    //mTextMessage.setText(R.string.title_home);
                     return true;
 
                 case R.id.navigation_notifications:
@@ -55,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+    public void showList(String a,String List){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(a);
+        builder.setMessage(List);
+        builder.show();
+    }
 
 
 
