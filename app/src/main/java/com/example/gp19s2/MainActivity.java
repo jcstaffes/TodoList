@@ -31,6 +31,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
+    Database database;
+
 
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        database=new Database(this);
+
     }
 
 
