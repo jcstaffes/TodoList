@@ -35,8 +35,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     Database database;
-
-
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
@@ -48,26 +46,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Cursor res = database.getList();
-                    if (res.getCount()==0){
-                        showList("Error","No data");
-                    }else{
-                        StringBuffer buffer = new StringBuffer();
-                        while(res.moveToNext()){
-                            buffer.append("Title: "+ res.getString(0)+"\n");
-                            buffer.append("Date: "+ res.getString(1)+"\n");
-                            buffer.append("Time: "+ res.getString(2)+"\n");
-                            buffer.append("Description: "+ res.getString(3)+"\n\n");
-
-                        }
-                        showList("Data",buffer.toString());
-                    }
-                    //mTextMessage.setText(R.string.title_home);
-                    return true;
+                    Intent intent = new Intent(MainActivity.this,List.class);
+                    startActivity(intent);
+                    break;
 
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
-                   return true;
+                   break;
             }
             return false;
         }
@@ -92,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);

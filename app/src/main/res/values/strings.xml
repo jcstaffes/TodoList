@@ -19,4 +19,5 @@
     <string name="edit_item3">What time does this isuue due?</string>
     <string name="text_item4">Description</string>
     <string name="edit_item4">What exactly will you need to do?</string>
+    <string name="list">show list</string>
 </resources>
