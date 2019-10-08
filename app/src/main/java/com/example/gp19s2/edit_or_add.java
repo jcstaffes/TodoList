@@ -102,6 +102,9 @@ public class edit_or_add extends AppCompatActivity  {
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
+                if (TextUtils.isEmpty(get_des)){
+                    get_des="no description";
+                }
                 if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)) {
                     Toast.makeText(edit_or_add.this, "Please enter something", Toast.LENGTH_SHORT).show();
                 }
