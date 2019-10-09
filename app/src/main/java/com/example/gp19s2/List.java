@@ -81,7 +81,8 @@ public class List extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(List.this,"yesh",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(List.this,edit.class);
+                startActivity(intent);
             }
         });
 

@@ -1,5 +1,4 @@
 package com.example.gp19s2;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
-public class edit_or_add extends AppCompatActivity  {
+public class edit extends AppCompatActivity{
     private TextView mTextMessage;
     private EditText titleEdit;
     private EditText dateEdit;
@@ -36,7 +35,7 @@ public class edit_or_add extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_or_add);
+        setContentView(R.layout.activity_edit);
 
         titleEdit=(EditText)findViewById(R.id.TITLE);
         dateEdit=(EditText)findViewById(R.id.DATE);
@@ -52,7 +51,7 @@ public class edit_or_add extends AppCompatActivity  {
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(edit_or_add.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog=new DatePickerDialog(edit.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month=month+1;
@@ -67,7 +66,7 @@ public class edit_or_add extends AppCompatActivity  {
         timeEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog timePickerDialog=new TimePickerDialog(edit_or_add.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timePickerDialog=new TimePickerDialog(edit.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String time=hour+":"+minute;
@@ -99,19 +98,19 @@ public class edit_or_add extends AppCompatActivity  {
                     get_des="no description";
                 }
                 if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)) {
-                    Toast.makeText(edit_or_add.this, "Please enter something", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(edit.this, "Please enter something", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Database db=new Database(this);
                     boolean add=db.insert(get_title,get_date,get_time,get_des);
                     if (add){
-                        Intent intent=new Intent(edit_or_add.this,MainActivity.class);
+                        Intent intent=new Intent(edit.this,MainActivity.class);
                         intent.putExtra("Insert",1);
-                        Toast.makeText(edit_or_add.this, "data inserted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(edit.this, "data inserted", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(edit_or_add.this, "error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(edit.this, "error", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -138,6 +137,4 @@ public class edit_or_add extends AppCompatActivity  {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
-
