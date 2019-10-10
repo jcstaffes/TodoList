@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:text="@string/Yes"
             android:layout_marginLeft="15dp"
-            android:onClick="completed_or_not"/>
+            />
 
         <RadioButton
             android:id="@+id/No"
@@ -144,7 +144,6 @@
             android:layout_height="wrap_content"
             android:text="@string/No"
             android:layout_marginLeft="15dp"
-            android:onClick="completed_or_not"
             android:checked="true"/>
         </RadioGroup>
 

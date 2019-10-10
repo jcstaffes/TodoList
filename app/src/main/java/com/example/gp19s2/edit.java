@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,12 +29,14 @@ public class edit extends AppCompatActivity{
     private EditText dateEdit;
     private EditText timeEdit;
     private EditText desEdit;
-    private TextView completedText;
+    private static RadioGroup completed;
+    private static RadioButton buttonCompleted;
     DatePickerDialog.OnDateSetListener setListener;
     private String get_title;
     private String get_date;
     private String get_time;
     private String get_des;
+    private String completed_or_not;
 
 
 
@@ -46,6 +50,7 @@ public class edit extends AppCompatActivity{
         dateEdit=(EditText)findViewById(R.id.DATE);
         timeEdit=(EditText)findViewById(R.id.TIME);
         desEdit= (EditText)findViewById(R.id.DESC);
+        completed=(RadioGroup)findViewById(R.id.COMP);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
         final int month =calendar.get(Calendar.MONTH);
@@ -99,6 +104,9 @@ public class edit extends AppCompatActivity{
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
+                int selected = completed.getCheckedRadioButtonId();
+                buttonCompleted=findViewById(selected);
+                completed_or_not=buttonCompleted.getText().toString();
                 if (TextUtils.isEmpty(get_des)){
                     get_des="no description";
                 }
@@ -107,7 +115,7 @@ public class edit extends AppCompatActivity{
                 }
                 else {
                     Database db=new Database(this);
-                    boolean add=db.insert(get_title,get_date,get_time,get_des,"No");
+                    boolean add=db.insert(get_title,get_date,get_time,get_des,completed_or_not);
                     if (add){
                         Intent intent=new Intent(edit.this,MainActivity.class);
                         intent.putExtra("Insert",1);
