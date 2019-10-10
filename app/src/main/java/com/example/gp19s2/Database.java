@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COL_3="DATE";
     public static final String COL_4="TIME";
     public static final String COL_5="DESCRIPTION";
+    public static final String COL_6="COMPLETED";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -27,7 +28,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DATE DATE,TIME TIME,DESCRIPTION TEXT)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DATE DATE,TIME TIME,DESCRIPTION TEXT,COMPLETED TEXT)");
     }
 
     @Override
@@ -37,13 +38,14 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public boolean insert(String title,String date,String time, String DES ){
+    public boolean insert(String title,String date,String time, String DES, String completed ){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_2, title);
         contentValues.put(COL_3, date);
         contentValues.put(COL_4, time);
         contentValues.put(COL_5, DES);
+        contentValues.put(COL_6, completed);
         long result=db.insert(TABLE_NAME,null,contentValues);
         db.close();
         if (result!=-1){

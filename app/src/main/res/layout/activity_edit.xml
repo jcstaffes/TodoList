@@ -128,9 +128,10 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/COMP">
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/Yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Yes"
@@ -138,12 +139,13 @@
             android:onClick="completed_or_not"/>
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/No"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/No"
             android:layout_marginLeft="15dp"
-            android:onClick="completed_or_not"/>
+            android:onClick="completed_or_not"
+            android:checked="true"/>
         </RadioGroup>
 
 

@@ -81,8 +81,8 @@ public class List extends AppCompatActivity {
                 temp.append("ID: "+list.getString(0)+", ");
                 temp.append("Title: "+list.getString(1)+", ");
                 temp.append("Date: "+list.getString(2)+", ");
-                temp.append("Time: "+list.getString(3)+", ");
-                temp.append("Description: "+list.getString(4)+"\n\n");
+                temp.append("Time: "+list.getString(3)+"\n");
+                temp.append("Completed or not: "+list.getString(5)+"\n\n");
                 tempList.add(temp.toString());
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tempList);
                 listView.setAdapter(listAdapter);

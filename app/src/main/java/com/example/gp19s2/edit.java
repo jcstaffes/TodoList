@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,11 +27,15 @@ public class edit extends AppCompatActivity{
     private EditText dateEdit;
     private EditText timeEdit;
     private EditText desEdit;
+    private TextView completedText;
     DatePickerDialog.OnDateSetListener setListener;
     private String get_title;
     private String get_date;
     private String get_time;
     private String get_des;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +107,7 @@ public class edit extends AppCompatActivity{
                 }
                 else {
                     Database db=new Database(this);
-                    boolean add=db.insert(get_title,get_date,get_time,get_des);
+                    boolean add=db.insert(get_title,get_date,get_time,get_des,"No");
                     if (add){
                         Intent intent=new Intent(edit.this,MainActivity.class);
                         intent.putExtra("Insert",1);
