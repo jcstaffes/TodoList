@@ -88,6 +88,7 @@ public class List extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(List.this,edit.class);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
+
                 startActivity(intent);
             }
         });
