@@ -1,7 +1,9 @@
 package com.example.gp19s2;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -32,6 +35,8 @@ public class List extends AppCompatActivity {
     Database database;
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+    ArrayList<String> tempString = new ArrayList<>();
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -81,6 +86,7 @@ public class List extends AppCompatActivity {
                 tempList.add(temp.toString());
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tempList);
                 listView.setAdapter(listAdapter);
+                tempString.add(list.getString(0));
             }
         }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -90,6 +96,26 @@ public class List extends AppCompatActivity {
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
 
                 startActivity(intent);
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final String temp = String.valueOf(l);
+                final Integer temp2 = Integer.parseInt(temp);
+                new AlertDialog.Builder(List.this).setIcon(android.R.drawable.ic_delete).setTitle("Are you sure?").setMessage("Do you want to delete this item?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String deletedID = tempString.get(temp2);
+                        Integer deleted = database.deleteData(deletedID);
+                        if (deleted>0){
+                            Toast.makeText(List.this,"Data deleted",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(List.this,"Data not deleted",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }).setNegativeButton("No",null).show();
+                return true;
             }
         });
 
