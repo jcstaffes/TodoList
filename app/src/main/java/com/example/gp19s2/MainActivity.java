@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
-                   break;
+                    Intent i = new Intent(MainActivity.this , Calendar.class);
+                    startActivity(i);
+                    return true;
             }
             return false;
         }
@@ -81,32 +83,32 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);
 
-        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-        compactCalendar.setUseThreeLetterAbbreviation(true);
+//        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+//        compactCalendar.setUseThreeLetterAbbreviation(true);
 
         //Set an event
         //Todo: read in an event title from database
-        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
-        compactCalendar.addEvent(ev1);
-
-        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
-            @Override
-            public void onDayClick(Date dateClicked) {
-                Context context = getApplicationContext();
-
-                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
-                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-
-            }
-        });
+//        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
+//        compactCalendar.addEvent(ev1);
+//
+//        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+//            @Override
+//            public void onDayClick(Date dateClicked) {
+//                Context context = getApplicationContext();
+//
+//                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
+//                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onMonthScroll(Date firstDayOfNewMonth) {
+//                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+//
+//            }
+//        });
         database=new Database(this);
 
     }
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.topnav,menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
