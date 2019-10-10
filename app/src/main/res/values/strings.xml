@@ -22,5 +22,8 @@
     <string name="list">show list</string>
     <string name="list2">Event list:\n\nlong click to delete, click to check detail</string>
     <string name="edit">EDIT</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="completed">Completed or not</string>
     <string name="title_activity_calendar2">Calendar</string>
 </resources>
