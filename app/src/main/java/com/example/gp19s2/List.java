@@ -27,6 +27,7 @@ import java.util.Locale;
 
 
 public class List extends AppCompatActivity {
+    ListView listView;
     private TextView mTextMessage;
     Database database;
     CompactCalendarView compactCalendar;
@@ -60,7 +61,7 @@ public class List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         database = new Database(this);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         ArrayList<String> tempList = new ArrayList<>();
         Cursor list = database.getList();
         if (list.getCount()==0){
@@ -82,6 +83,7 @@ public class List extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(List.this,edit.class);
+                intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
                 startActivity(intent);
             }
         });
