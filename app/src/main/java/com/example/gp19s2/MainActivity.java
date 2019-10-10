@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     Intent intent = new Intent(MainActivity.this,List.class);
                     startActivity(intent);
-                    break;
-
+                    return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
                     Intent i = new Intent(MainActivity.this , Calendar.class);

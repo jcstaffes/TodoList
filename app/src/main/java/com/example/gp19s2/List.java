@@ -46,7 +46,9 @@ public class List extends AppCompatActivity {
                     break;
 
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+//                    mTextMessage.setText(R.string.title_notifications);
+                    Intent intent1 = new Intent(List.this,Calendar.class);
+                    startActivity(intent1);
                     break;
             }
             return false;
@@ -64,6 +66,8 @@ public class List extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         ArrayList<String> tempList = new ArrayList<>();
         Cursor list = database.getList();
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         if (list.getCount()==0){
             Toast.makeText(this,"No data",Toast.LENGTH_LONG).show();
         }else{

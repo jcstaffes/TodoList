@@ -25,9 +25,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Calendar extends AppCompatActivity {
-
     private TextView mTextMessage;
-
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
@@ -38,12 +36,14 @@ public class Calendar extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    Intent intent = new Intent(Calendar.this,List.class);
+                    startActivity(intent);
                     return true;
 
-//                case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
-//                    return true;
+                case R.id.navigation_notifications:
+                    Intent intent1 = new Intent(Calendar.this,Calendar.class);
+                    startActivity(intent1);
+                    return true;
             }
             return false;
         }
@@ -88,6 +88,7 @@ public class Calendar extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override
