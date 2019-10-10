@@ -124,22 +124,27 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
 
-        <CheckBox
-            android:id="@+id/Yes"
-            android:layout_width="wrap_content"
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Yes"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:onClick="completed_or_not"/>
 
-        <CheckBox
-            android:id="@+id/No"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/No"
-            android:paddingLeft="10dp"
             android:layout_marginLeft="15dp"
-            />
+            android:onClick="completed_or_not"/>
+        </RadioGroup>
 
 
     </LinearLayout>
