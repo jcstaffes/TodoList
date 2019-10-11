@@ -30,7 +30,7 @@ public class edit extends AppCompatActivity{
     private EditText dateEdit;
     private EditText timeEdit;
     private EditText desEdit;
-    private EditText idEdit;
+    //private EditText idEdit;
     private static RadioGroup completed;
     private static RadioButton buttonCompleted;
     DatePickerDialog.OnDateSetListener setListener;
@@ -38,7 +38,7 @@ public class edit extends AppCompatActivity{
     private String get_date;
     private String get_time;
     private String get_des;
-    private String get_id;
+    //private String get_id;
     private String completed_or_not;
 
 
@@ -48,7 +48,7 @@ public class edit extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        idEdit=findViewById(R.id.ID2);
+        //idEdit=findViewById(R.id.ID2);
         titleEdit=(EditText)findViewById(R.id.TITLE2);
         dateEdit=(EditText)findViewById(R.id.DATE2);
         timeEdit=(EditText)findViewById(R.id.TIME2);
@@ -108,14 +108,14 @@ public class edit extends AppCompatActivity{
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
-                get_id=idEdit.getText().toString().trim();
+                //get_id=idEdit.getText().toString().trim();
                 int selected = completed.getCheckedRadioButtonId();
                 buttonCompleted=findViewById(selected);
                 completed_or_not=buttonCompleted.getText().toString();
                 Database thisDB = new Database(this);
                 String idToedit = getIntent().getStringExtra("IDtoChange");
-                //Cursor c = thisDB.search(idToedit);
-                Cursor c = thisDB.search(get_id);
+                Cursor c = thisDB.search(idToedit);
+                //Cursor c = thisDB.search(get_id);
                 System.out.println(c);
                 String res_title="";
                 String res_date="";
