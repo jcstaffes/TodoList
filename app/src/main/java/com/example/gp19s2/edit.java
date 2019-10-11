@@ -103,6 +103,7 @@ public class edit extends AppCompatActivity{
         switch (item.getItemId()){
             case R.id.confirm:
                 get_title = titleEdit.getText().toString().trim();
+                System.out.println(get_title);
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
@@ -113,6 +114,7 @@ public class edit extends AppCompatActivity{
                 Database thisDB = new Database(this);
                 String idToedit = getIntent().getStringExtra("IDtoChange");
                 Cursor c = thisDB.search(idToedit);
+                System.out.println(c);
                 String res_title="";
                 String res_date="";
                 String res_time="";
@@ -139,7 +141,10 @@ public class edit extends AppCompatActivity{
                 }
                 boolean isUpdate = thisDB.updateData(idToedit,res_title,res_date,res_time,res_des,completed_or_not);
                 if (isUpdate){
+                    Intent intent=new Intent(edit.this,List.class);
+                    intent.putExtra("Update",1);
                     Toast.makeText(edit.this, "Data updated", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
                 }else{
                     Toast.makeText(edit.this, "fail to update data", Toast.LENGTH_SHORT).show();
                 }
