@@ -94,9 +94,9 @@ public class List extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Integer temp = (Integer)l;
-                Integer changedID=tempString.get(l);
+                final String temp = String.valueOf(l);
+                final Integer temp2 = Integer.parseInt(temp);
+                String changedID=tempString.get(temp2);
                 Intent intent = new Intent(List.this,edit.class);
                 intent.putExtra("IDtoChange",changedID);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());

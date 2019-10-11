@@ -37,7 +37,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
 
     }
-    public Cursor search(Integer a){
+    public Cursor search(String a){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res = db.rawQuery("Select * From "+TABLE_NAME+" Where ID = "+ a,null);
         return res;
