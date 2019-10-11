@@ -30,6 +30,7 @@ public class edit extends AppCompatActivity{
     private EditText dateEdit;
     private EditText timeEdit;
     private EditText desEdit;
+    private EditText idEdit;
     private static RadioGroup completed;
     private static RadioButton buttonCompleted;
     DatePickerDialog.OnDateSetListener setListener;
@@ -37,7 +38,7 @@ public class edit extends AppCompatActivity{
     private String get_date;
     private String get_time;
     private String get_des;
-    //private String get_id;
+    private String get_id;
     private String completed_or_not;
 
 
@@ -47,12 +48,12 @@ public class edit extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        //idEdit=findViewById(R.id.ID);
-        titleEdit=(EditText)findViewById(R.id.TITLE);
-        dateEdit=(EditText)findViewById(R.id.DATE);
-        timeEdit=(EditText)findViewById(R.id.TIME);
-        desEdit= (EditText)findViewById(R.id.DESC);
-        completed=(RadioGroup)findViewById(R.id.COMP);
+        idEdit=findViewById(R.id.ID2);
+        titleEdit=(EditText)findViewById(R.id.TITLE2);
+        dateEdit=(EditText)findViewById(R.id.DATE2);
+        timeEdit=(EditText)findViewById(R.id.TIME2);
+        desEdit= (EditText)findViewById(R.id.DESC2);
+        completed=(RadioGroup)findViewById(R.id.COMP2);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
         final int month =calendar.get(Calendar.MONTH);
@@ -107,18 +108,20 @@ public class edit extends AppCompatActivity{
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
-                //get_id=idEdit.getText().toString().trim();
+                get_id=idEdit.getText().toString().trim();
                 int selected = completed.getCheckedRadioButtonId();
                 buttonCompleted=findViewById(selected);
                 completed_or_not=buttonCompleted.getText().toString();
                 Database thisDB = new Database(this);
                 String idToedit = getIntent().getStringExtra("IDtoChange");
-                Cursor c = thisDB.search(idToedit);
+                //Cursor c = thisDB.search(idToedit);
+                Cursor c = thisDB.search(get_id);
                 System.out.println(c);
                 String res_title="";
                 String res_date="";
                 String res_time="";
                 String res_des="";
+                while(c.moveToNext()){
                 if (TextUtils.isEmpty(get_title)){
                     res_title=c.getString(1);
                 }else{
@@ -138,7 +141,7 @@ public class edit extends AppCompatActivity{
                     res_des=c.getString(4);
                 }else{
                     res_des=get_des;
-                }
+                }}
                 boolean isUpdate = thisDB.updateData(idToedit,res_title,res_date,res_time,res_des,completed_or_not);
                 if (isUpdate){
                     Intent intent=new Intent(edit.this,List.class);
