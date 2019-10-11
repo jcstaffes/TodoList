@@ -22,6 +22,28 @@
             android:textSize="50sp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
+        <!--<TextView
+            android:id="@+id/text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_id"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"/>
+        <EditText
+            android:id="@+id/ID"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="text"
+            android:hint="@string/edit_id"
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/inputselected"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="20dp"
+            android:importantForAutofill="no"/>-->
         <TextView
             android:id="@+id/text_item1"
             android:layout_width="match_parent"
@@ -115,8 +137,37 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="20dp"
             android:importantForAutofill="no"/>
+        <TextView
+            android:id="@+id/comlete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/completed"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"/>
 
 
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/COMP">
+        <RadioButton
+            android:id="@+id/Yes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Yes"
+            android:layout_marginLeft="15dp"
+            />
+
+        <RadioButton
+            android:id="@+id/No"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/No"
+            android:layout_marginLeft="15dp"
+            android:checked="true"/>
+        </RadioGroup>
 
 
     </LinearLayout>

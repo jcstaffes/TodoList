@@ -39,6 +39,7 @@ public class List extends AppCompatActivity {
 
 
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -81,8 +82,9 @@ public class List extends AppCompatActivity {
                 temp.append("ID: "+list.getString(0)+", ");
                 temp.append("Title: "+list.getString(1)+", ");
                 temp.append("Date: "+list.getString(2)+", ");
-                temp.append("Time: "+list.getString(3)+", ");
-                temp.append("Description: "+list.getString(4)+"\n\n");
+                temp.append("Time: "+list.getString(3)+"\n");
+                temp.append("Description: "+list.getString(4)+"\n");
+                temp.append("Completed or not: "+list.getString(5)+"\n\n");
                 tempList.add(temp.toString());
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tempList);
                 listView.setAdapter(listAdapter);
@@ -92,9 +94,13 @@ public class List extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final String temp = String.valueOf(l);
+                final Integer temp2 = Integer.parseInt(temp);
+                String changedID=tempString.get(temp2);
                 Intent intent = new Intent(List.this,edit.class);
+                intent.putExtra("IDtoChange",changedID);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
-
+                
                 startActivity(intent);
             }
         });

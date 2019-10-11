@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COL_3="DATE";
     public static final String COL_4="TIME";
     public static final String COL_5="DESCRIPTION";
+    public static final String COL_6="COMPLETED";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -27,7 +28,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DATE DATE,TIME TIME,DESCRIPTION TEXT)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DATE DATE,TIME TIME,DESCRIPTION TEXT,COMPLETED TEXT)");
     }
 
     @Override
@@ -36,14 +37,20 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+    public Cursor search(String a){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * From "+TABLE_NAME+" Where ID = "+ a,null);
+        return res;
+    }
 
-    public boolean insert(String title,String date,String time, String DES ){
+    public boolean insert(String title,String date,String time, String DES, String completed ){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_2, title);
         contentValues.put(COL_3, date);
         contentValues.put(COL_4, time);
         contentValues.put(COL_5, DES);
+        contentValues.put(COL_6, completed);
         long result=db.insert(TABLE_NAME,null,contentValues);
         db.close();
         if (result!=-1){
@@ -68,6 +75,19 @@ public class Database extends SQLiteOpenHelper {
 //        Cursor res = db.rawQuery("select * from TABLE_NAME where DATE=?",null);
         Cursor res=db.query(TABLE_NAME,null,"Date=?",new String[]{date},null,null,null);
         return res;
+    }
+
+    public boolean updateData(String id,String title,String date,String time, String DES, String completed){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, title);
+        contentValues.put(COL_3, date);
+        contentValues.put(COL_4, time);
+        contentValues.put(COL_5, DES);
+        contentValues.put(COL_6, completed);
+        db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
+        return true;
     }
 }
 
