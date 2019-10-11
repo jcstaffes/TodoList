@@ -18,6 +18,8 @@
     <string name="text_item3">Time</string>
     <string name="edit_item3">What time does this isuue due?</string>
     <string name="text_item4">Description</string>
+    <string name="text_id">ID</string>
+    <string name="edit_id">Which item you want to edit?</string>
     <string name="edit_item4">What exactly will you need to do?</string>
     <string name="list">show list</string>
     <string name="list2">Event list:\n\nlong click to delete, click to check detail</string>

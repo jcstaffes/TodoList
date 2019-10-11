@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -36,6 +37,7 @@ public class edit extends AppCompatActivity{
     private String get_date;
     private String get_time;
     private String get_des;
+    //private String get_id;
     private String completed_or_not;
 
 
@@ -45,7 +47,7 @@ public class edit extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-
+        //idEdit=findViewById(R.id.ID);
         titleEdit=(EditText)findViewById(R.id.TITLE);
         dateEdit=(EditText)findViewById(R.id.DATE);
         timeEdit=(EditText)findViewById(R.id.TIME);
@@ -104,13 +106,48 @@ public class edit extends AppCompatActivity{
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
+                //get_id=idEdit.getText().toString().trim();
                 int selected = completed.getCheckedRadioButtonId();
                 buttonCompleted=findViewById(selected);
                 completed_or_not=buttonCompleted.getText().toString();
+                Database thisDB = new Database(this);
+                String idToedit = getIntent().getStringExtra("IDtoChange");
+                Cursor c = thisDB.search(idToedit);
+                String res_title="";
+                String res_date="";
+                String res_time="";
+                String res_des="";
+                if (TextUtils.isEmpty(get_title)){
+                    res_title=c.getString(1);
+                }else{
+                    res_title=get_title;
+                }
+                if (TextUtils.isEmpty(get_date)){
+                    res_date=c.getString(2);
+                }else{
+                    res_date=get_date;
+                }
+                if (TextUtils.isEmpty(get_time)){
+                    res_time=c.getString(3);
+                }else{
+                    res_time=get_time;
+                }
                 if (TextUtils.isEmpty(get_des)){
+                    res_des=c.getString(4);
+                }else{
+                    res_des=get_des;
+                }
+                boolean isUpdate = thisDB.updateData(idToedit,res_title,res_date,res_time,res_des,completed_or_not);
+                if (isUpdate){
+                    Toast.makeText(edit.this, "Data updated", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(edit.this, "fail to update data", Toast.LENGTH_SHORT).show();
+                }
+
+                /*if (TextUtils.isEmpty(get_des)){
                     get_des="no description";
                 }
-                if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)) {
+                if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)||TextUtils.isEmpty(get_id)) {
                     Toast.makeText(edit.this, "Please enter something", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -125,7 +162,7 @@ public class edit extends AppCompatActivity{
                     else {
                         Toast.makeText(edit.this, "error", Toast.LENGTH_SHORT).show();
                     }
-                }
+                }*/
 
 //
 //                Intent intent=new Intent(edit_or_add.this,MainActivity.class);

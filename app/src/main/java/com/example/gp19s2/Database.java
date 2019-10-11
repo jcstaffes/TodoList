@@ -37,6 +37,11 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+    public Cursor search(Integer a){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * From "+TABLE_NAME+" Where ID = "+ a,null);
+        return res;
+    }
 
     public boolean insert(String title,String date,String time, String DES, String completed ){
         SQLiteDatabase db=this.getWritableDatabase();
@@ -64,6 +69,19 @@ public class Database extends SQLiteOpenHelper {
     public Integer deleteData(String id){
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(TABLE_NAME,"ID=?",new String[]{id});
+    }
+
+    public boolean updateData(String id,String title,String date,String time, String DES, String completed){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, title);
+        contentValues.put(COL_3, date);
+        contentValues.put(COL_4, time);
+        contentValues.put(COL_5, DES);
+        contentValues.put(COL_6, completed);
+        db.update(TABLE_NAME,contentValues,"ID=?",new String[]{id});
+        return true;
     }
 }
 
