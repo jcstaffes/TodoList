@@ -100,6 +100,7 @@ public class List extends AppCompatActivity {
                 Intent intent = new Intent(List.this,edit.class);
                 intent.putExtra("IDtoChange",changedID);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
+                
                 startActivity(intent);
             }
         });
