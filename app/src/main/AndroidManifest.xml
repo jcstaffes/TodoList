@@ -13,6 +13,7 @@
         <activity android:name=".edit_or_add"/>
         <activity android:name=".edit"/>
         <activity android:name=".List"/>
+        <activity android:name=".List1"/>
         <activity android:name=".Calendar"></activity>
         <activity
             android:name=".MainActivity"

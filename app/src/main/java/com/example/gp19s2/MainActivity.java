@@ -1,5 +1,6 @@
 package com.example.gp19s2;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.usage.UsageEvents;
 import android.content.Context;
@@ -18,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
-
+//    private void startAlarm(String t){
+//        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        am.s
+//    }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -81,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);
+
 
 //        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
 //        compactCalendar.setUseThreeLetterAbbreviation(true);

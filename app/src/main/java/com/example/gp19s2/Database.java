@@ -63,5 +63,11 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(TABLE_NAME,"ID=?",new String[]{id});
     }
+    public Cursor getListCurrentDay(String date){
+        SQLiteDatabase db=this.getWritableDatabase();
+//        Cursor res = db.rawQuery("select * from TABLE_NAME where DATE=?",null);
+        Cursor res=db.query(TABLE_NAME,null,"Date=?",new String[]{date},null,null,null);
+        return res;
+    }
 }
 

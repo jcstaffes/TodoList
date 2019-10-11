@@ -21,22 +21,26 @@
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
-        android:layout_height="232dp"
+        android:layout_height="256dp"
         android:layout_marginBottom="292dp"
+        android:background="#00ffffff"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="#7CB8D3"
+        app:compactCalendarBackgroundColor="#FFFFFF"
+        app:compactCalendarMultiEventIndicatorColor="#D58723"
+        app:compactCalendarEventIndicatorStyle="small_indicator"
         app:compactCalendarCurrentDayBackgroundColor="#86FFEB3B"
+        app:compactCalendarCurrentDayTextColor="#4E4A4A"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#7A8CE573"
-        app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextColor="#fff"
-        app:compactCalendarTextSize="14sp"
+        app:compactCalendarTextColor="#4E4A4A"
+        app:compactCalendarTextSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="@+id/nav_view"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
