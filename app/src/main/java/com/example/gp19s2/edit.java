@@ -30,7 +30,6 @@ public class edit extends AppCompatActivity{
     private EditText dateEdit;
     private EditText timeEdit;
     private EditText desEdit;
-    //private EditText idEdit;
     private static RadioGroup completed;
     private static RadioButton buttonCompleted;
     DatePickerDialog.OnDateSetListener setListener;
@@ -38,7 +37,6 @@ public class edit extends AppCompatActivity{
     private String get_date;
     private String get_time;
     private String get_des;
-    //private String get_id;
     private String completed_or_not;
 
 
@@ -48,7 +46,6 @@ public class edit extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        //idEdit=findViewById(R.id.ID2);
         titleEdit=(EditText)findViewById(R.id.TITLE2);
         dateEdit=(EditText)findViewById(R.id.DATE2);
         timeEdit=(EditText)findViewById(R.id.TIME2);
@@ -108,14 +105,12 @@ public class edit extends AppCompatActivity{
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
-                //get_id=idEdit.getText().toString().trim();
                 int selected = completed.getCheckedRadioButtonId();
                 buttonCompleted=findViewById(selected);
                 completed_or_not=buttonCompleted.getText().toString();
                 Database thisDB = new Database(this);
                 String idToedit = getIntent().getStringExtra("IDtoChange");
                 Cursor c = thisDB.search(idToedit);
-                //Cursor c = thisDB.search(get_id);
                 System.out.println(c);
                 String res_title="";
                 String res_date="";
@@ -152,29 +147,6 @@ public class edit extends AppCompatActivity{
                     Toast.makeText(edit.this, "fail to update data", Toast.LENGTH_SHORT).show();
                 }
 
-                /*if (TextUtils.isEmpty(get_des)){
-                    get_des="no description";
-                }
-                if (TextUtils.isEmpty(get_title) || TextUtils.isEmpty(get_date)||TextUtils.isEmpty(get_time)||TextUtils.isEmpty(get_id)) {
-                    Toast.makeText(edit.this, "Please enter something", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Database db=new Database(this);
-                    boolean add=db.insert(get_title,get_date,get_time,get_des,completed_or_not);
-                    if (add){
-                        Intent intent=new Intent(edit.this,MainActivity.class);
-                        intent.putExtra("Insert",1);
-                        Toast.makeText(edit.this, "data inserted", Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(edit.this, "error", Toast.LENGTH_SHORT).show();
-                    }
-                }*/
-
-//
-//                Intent intent=new Intent(edit_or_add.this,MainActivity.class);
-//                startActivity(intent);
                 break;
             case R.id.cancel:
                 new AlertDialog.Builder(this)
