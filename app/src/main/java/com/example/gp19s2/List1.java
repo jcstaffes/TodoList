@@ -1,5 +1,6 @@
 package com.example.gp19s2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -31,6 +33,7 @@ public class List1 extends AppCompatActivity {
     Database database;
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+    ArrayList<String> tempString = new ArrayList<>();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -77,14 +80,24 @@ public class List1 extends AppCompatActivity {
                 temp.append("Date: "+list.getString(2)+", ");
                 temp.append("Time: "+list.getString(3)+", ");
                 temp.append("Description: "+list.getString(4)+"\n\n");
+                temp.append("Completed or not: "+list.getString(5)+"\n\n");
                 tempList.add(temp.toString());
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tempList);
                 listView.setAdapter(listAdapter);
+                tempString.add(list.getString(0));
             }
         }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                final String temp = String.valueOf(l);
+//                final Integer temp2 = Integer.parseInt(temp);
+//                String changedID=tempString.get(temp2);
+//                Intent intent = new Intent(List1.this,edit.class);
+//                intent.putExtra("IDtoChange",changedID);
+//                intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
+//
+//                startActivity(intent);
                 Intent intent = new Intent(List1.this,edit.class);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
                 startActivity(intent);
