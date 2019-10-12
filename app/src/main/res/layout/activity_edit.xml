@@ -22,7 +22,7 @@
             android:textSize="50sp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"/>
-        
+
         <TextView
             android:id="@+id/text_item1"
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="text"
-            android:hint="@string/edit_item1"
+            android:hint="@string/edit_item5"
             android:layout_marginLeft="15dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -65,7 +65,7 @@
             android:background="@drawable/inputselected"
             android:clickable="true"
             android:focusableInTouchMode="false"
-            android:hint="@string/edit_item2"
+            android:hint="@string/edit_item6"
             android:importantForAutofill="no"
             android:inputType="date"
             android:paddingLeft="5dp"
@@ -85,7 +85,7 @@
             android:inputType="time"
             android:clickable="true"
             android:focusableInTouchMode="false"
-            android:hint="@string/edit_item3"
+            android:hint="@string/edit_item7"
             android:layout_marginLeft="15dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="text"
-            android:hint="@string/edit_item4"
+            android:hint="@string/edit_item8"
             android:layout_marginLeft="15dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
