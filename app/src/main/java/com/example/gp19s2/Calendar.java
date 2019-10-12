@@ -111,7 +111,7 @@ public class Calendar extends AppCompatActivity {
                 String date=currentday+"/"+changeMonth(currentmonth)+"/"+currentyear;
                 currentdaylist = database.getListCurrentDay(date);
                 if (currentdaylist.getCount()!=0){
-                    Intent intent = new Intent(Calendar.this,List1.class);
+                    Intent intent = new Intent(Calendar.this,List3.class);
                     startActivity(intent);
                 }
 //                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
