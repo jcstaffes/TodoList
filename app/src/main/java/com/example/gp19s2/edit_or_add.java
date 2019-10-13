@@ -3,7 +3,10 @@ package com.example.gp19s2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,6 +41,15 @@ public class edit_or_add extends AppCompatActivity  {
     private String get_time;
     private String get_des;
     private String completed_or_not;
+    public int yearAlarm;
+    public int monthAlarm;
+    public int dayAlarm;
+    public int hourAlarm;
+    public int minuteAlarm;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +63,15 @@ public class edit_or_add extends AppCompatActivity  {
         completed=(RadioGroup)findViewById(R.id.COMP);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
+        yearAlarm=year;
         final int month =calendar.get(Calendar.MONTH);
+        minuteAlarm=month;
         final int day =calendar.get(Calendar.DAY_OF_MONTH);
+        dayAlarm=day;
         final int hour=calendar.get(Calendar.HOUR_OF_DAY);
+        hourAlarm=hour;
         final int minute=calendar.get(Calendar.MINUTE);
+        minuteAlarm=minute;
         final Date date =calendar.getTime();
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +132,17 @@ public class edit_or_add extends AppCompatActivity  {
                     Database db=new Database(this);
                     boolean add=db.insert(get_title,get_date,get_time,get_des,completed_or_not);
                     if (add){
+                        Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
+                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+                        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.YEAR,yearAlarm);
+                        calendar.set(Calendar.MONTH,monthAlarm);
+                        calendar.set(Calendar.DAY_OF_MONTH,dayAlarm-1);
+                        calendar.set(Calendar.HOUR_OF_DAY,hourAlarm);
+                        calendar.set(Calendar.MINUTE,minuteAlarm);
+                        calendar.set(Calendar.MILLISECOND,0);
+                        am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pi);
                         Intent intent=new Intent(edit_or_add.this,MainActivity.class);
                         intent.putExtra("Insert",1);
                         Toast.makeText(edit_or_add.this, "data inserted", Toast.LENGTH_SHORT).show();
