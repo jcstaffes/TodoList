@@ -5,30 +5,18 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.usage.UsageEvents;
 import android.content.Context;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
-
-
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +28,7 @@ import java.util.Locale;
 
 import static android.app.AlarmManager.ELAPSED_REALTIME_WAKEUP;
 
+//Go to different activity by click different item
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     Database database;
@@ -51,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 //        am.s
 //    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -70,13 +60,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-    public void showList(String a,String List){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(a);
-        builder.setMessage(List);
-        builder.show();
-    }
+
 
 
 

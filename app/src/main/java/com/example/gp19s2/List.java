@@ -28,7 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
+/*@author Jiayi Bian & Jiamin Dai
+To show the list of existing items in the database*/
 public class List extends AppCompatActivity {
     ListView listView;
     private TextView mTextMessage;
@@ -39,7 +40,7 @@ public class List extends AppCompatActivity {
 
 
 
-
+//Change activities between calendar and list
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -52,7 +53,6 @@ public class List extends AppCompatActivity {
                     break;
 
                 case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
                     Intent intent1 = new Intent(List.this,Calendar.class);
                     startActivity(intent1);
                     break;
@@ -63,7 +63,7 @@ public class List extends AppCompatActivity {
 
 
 
-
+//To show existing items in the listview. If there is no data, "No data" message will show.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +91,7 @@ public class List extends AppCompatActivity {
                 tempString.add(list.getString(0));
             }
         }
+        //Click item to edit information of items. Click item will go to the edit activity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -98,12 +99,13 @@ public class List extends AppCompatActivity {
                 final Integer temp2 = Integer.parseInt(temp);
                 String changedID=tempString.get(temp2);
                 Intent intent = new Intent(List.this,edit.class);
+                //send the ID of clicked item to the edit activity
                 intent.putExtra("IDtoChange",changedID);
                 intent.putExtra("ListDetail",listView.getItemAtPosition(i).toString());
-                
                 startActivity(intent);
             }
         });
+        //Long click item to delete the item in the database
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -51,6 +51,10 @@ public class edit extends AppCompatActivity{
 
 
 
+    /*@author the whole team
+    Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
+    Similiar to edit_or_add
+    To edit the existing items*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +121,6 @@ public class edit extends AppCompatActivity{
         switch (item.getItemId()){
             case R.id.confirm:
                 get_title = titleEdit.getText().toString().trim();
-                System.out.println(get_title);
                 get_date = dateEdit.getText().toString().trim();
                 get_time = timeEdit.getText().toString().trim();
                 get_des =desEdit.getText().toString().trim();
@@ -125,9 +128,11 @@ public class edit extends AppCompatActivity{
                 buttonCompleted=findViewById(selected);
                 completed_or_not=buttonCompleted.getText().toString();
                 Database thisDB = new Database(this);
+                //To receive the ID of the item which is clicked from the List activity and search the row whose ID is this ID
                 String idToedit = getIntent().getStringExtra("IDtoChange");
                 Cursor c = thisDB.search(idToedit);
                 System.out.println(c);
+                //If user change some columns, this information will be changed in the database, otherwise the information will keep the same
                 String res_title="";
                 String res_date="";
                 String res_time="";

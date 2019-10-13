@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/*@author Jiayi Bian
+To set alarm action*/
 public class Alarm extends BroadcastReceiver {
     public static ArrayList<String> eventAlarm=new ArrayList<>();
 
