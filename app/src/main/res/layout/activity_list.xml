@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".List">
 
-    <!--Written by Jiayi Bian
+    <!--@author Jiayi Bian
     This interface is to view the existing item list
     Users can scroll down to view many items-->
 

@@ -28,10 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-//Written by Jiayi Bian & Jiamin Dai
-//To show the list of existing items in the database
-
-
+/*@author Jiayi Bian & Jiamin Dai
+To show the list of existing items in the database*/
 public class List extends AppCompatActivity {
     ListView listView;
     private TextView mTextMessage;
@@ -55,7 +53,6 @@ public class List extends AppCompatActivity {
                     break;
 
                 case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
                     Intent intent1 = new Intent(List.this,Calendar.class);
                     startActivity(intent1);
                     break;

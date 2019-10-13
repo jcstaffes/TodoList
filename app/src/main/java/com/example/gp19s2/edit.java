@@ -48,11 +48,10 @@ public class edit extends AppCompatActivity{
     public int minuteAlarm2;
 
 
-    //Written by the whole team
-    //Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
-    //Similiar to edit_or_add
-    //To edit the existing items
-
+    /*@author the whole team
+    Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
+    Similiar to edit_or_add
+    To edit the existing items*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

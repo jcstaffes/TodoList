@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".edit">
     <!--    This part of codes refer to https://www.youtube.com/watch?v=vs3YKWPBs3I&t=273s
-    Written by Jiayi Bian
+    @author Jiayi Bian
     This interface is to edit the existing item, user can change any column which they want to change for the existing item
     Same interface as the edit_or_add-->
     <LinearLayout

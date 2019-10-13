@@ -27,7 +27,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
-//Written by the whole team
+//@author the whole team
 //Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
 
 
@@ -117,8 +117,8 @@ public class edit_or_add extends AppCompatActivity  {
         return true;
     }
 
-    //To insert information into the database
-    //User can also cancel adding
+   /* To insert information into the database
+    User can also cancel adding*/
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.confirm:

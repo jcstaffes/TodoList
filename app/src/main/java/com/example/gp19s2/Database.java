@@ -11,12 +11,11 @@ import androidx.annotation.Nullable;
 import java.sql.Time;
 import java.util.Date;
 
- /*Written by Jiayi Bian & Yijian Fan
+/*@author Jiayi Bian & Yijian Fan
 This class is to create database and add/delete/update/search items in database
 We use SQLite to maintain the database
 This part of code refer to https://www.youtube.com/watch?v=kDZES1wtKUY&t=3955s
 */
-
 public class Database extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="todo.db";
     public static final String TABLE_NAME="todo_table";
@@ -70,7 +69,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
      /*To get the whole database*/
-
     public Cursor getList(){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
@@ -82,7 +80,6 @@ public class Database extends SQLiteOpenHelper {
     }
     public Cursor getListCurrentDay(String date){
         SQLiteDatabase db=this.getWritableDatabase();
-//        Cursor res = db.rawQuery("select * from TABLE_NAME where DATE=?",null);
         Cursor res=db.query(TABLE_NAME,null,"Date=?",new String[]{date},null,null,null);
         return res;
     }

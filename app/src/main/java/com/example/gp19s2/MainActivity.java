@@ -14,9 +14,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
 //Go to different activity by click different item
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
