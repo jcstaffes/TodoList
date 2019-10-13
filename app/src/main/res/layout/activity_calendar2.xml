@@ -8,6 +8,12 @@
 
 
 
+    /*
+    @author: Shujing Zhao
+    This calendar interface is referred from github.sundeepk.compactcalendarview
+    with some custom design and bottom navigation bar
+
+    */
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"

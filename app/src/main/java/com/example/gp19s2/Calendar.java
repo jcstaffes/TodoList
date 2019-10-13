@@ -32,6 +32,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+/*
+@author Shujing Zhao & Jiamin Dai
+To create a calendar that can loads data from database to show event
+This calendar page share the bottom navigation and add button with main_activity page
+referred from github.sundeepk.compactcalendarview
+*/
 public class Calendar extends AppCompatActivity {
     private TextView mTextMessage;
     CompactCalendarView compactCalendar;
@@ -41,6 +47,10 @@ public class Calendar extends AppCompatActivity {
     public static Cursor currentdaylist;
     Cursor alldaylist;
 
+    /*
+    * Set the bottom navigation
+    * navigate to list
+    * */
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -61,6 +71,9 @@ public class Calendar extends AppCompatActivity {
         }
     };
 
+    /*
+    Custom the calendar view and load from database
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,22 +92,17 @@ public class Calendar extends AppCompatActivity {
 
         database = new Database(this);
 
-        //Set an event
-        //Todo: read in an event title from database
-//        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
-//        compactCalendar.addEvent(ev1);
 
         alldaylist=database.getList();
         ArrayList<String> tempList = new ArrayList<>();
         while (alldaylist.moveToNext()){
             tempList.add(alldaylist.getString(2));
         }
-//        10/10/2019
+
         for (int i=0;i<tempList.size();i++){
             String day=tempList.get(i).substring(0,2);
             String month=tempList.get(i).substring(3,5);
             String year=tempList.get(i).substring(6);
-            //String tsStr = "2011-05-09 11:49:45";
             String str=year+"-"+month+"-"+day+" 09:00:00";
             Timestamp ts = Timestamp.valueOf(str);
             Event event=new Event(Color.RED,ts.getTime(),"");
@@ -102,6 +110,10 @@ public class Calendar extends AppCompatActivity {
         }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+
+            /*
+            Set click to intent to event detail page
+             */
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
@@ -114,9 +126,7 @@ public class Calendar extends AppCompatActivity {
                     Intent intent = new Intent(Calendar.this,List3.class);
                     startActivity(intent);
                 }
-//                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
-//                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
-//                }
+
                 else{
                     Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
                 }

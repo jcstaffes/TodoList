@@ -44,25 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <com.github.sundeepk.compactcalendarview.CompactCalendarView-->
-<!--        android:id="@+id/compactcalendar_view"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="250dp"-->
-<!--        android:layout_marginBottom="152dp"-->
-<!--        android:paddingLeft="10dp"-->
-<!--        android:paddingRight="10dp"-->
-<!--        app:compactCalendarBackgroundColor="#ffe95451"-->
-<!--        app:compactCalendarCurrentDayBackgroundColor="#B71C1C"-->
-<!--        app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"-->
-<!--        app:compactCalendarMultiEventIndicatorColor="#fff"-->
-<!--        app:compactCalendarTargetHeight="250dp"-->
-<!--        app:compactCalendarTextColor="#fff"-->
-<!--        app:compactCalendarTextSize="12sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/nav_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:ignore="MissingConstraints" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
