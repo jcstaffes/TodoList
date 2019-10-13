@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".List">
 
+    <!--written by Jiayi Bian
+    this interface is to view the existing item list
+    user can scroll down to view many items-->
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
