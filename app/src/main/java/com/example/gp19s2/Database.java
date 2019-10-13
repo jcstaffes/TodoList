@@ -13,7 +13,9 @@ import java.util.Date;
 
  /*Written by Jiayi Bian & Yijian Fan
 This class is to create database and add/delete/update/search items in database
-We use SQLite to maintain the database*/
+We use SQLite to maintain the database
+This part of code refer to https://www.youtube.com/watch?v=kDZES1wtKUY&t=3955s
+*/
 
 public class Database extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="todo.db";

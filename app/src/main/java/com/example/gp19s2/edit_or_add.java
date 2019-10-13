@@ -27,7 +27,9 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
-//alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
+//Written by the whole team
+//Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
+
 
 public class edit_or_add extends AppCompatActivity  {
     private TextView mTextMessage;
@@ -52,7 +54,7 @@ public class edit_or_add extends AppCompatActivity  {
 
 
 
-
+//To get information from those EditTexts and RadioGroup in the interface
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,9 @@ public class edit_or_add extends AppCompatActivity  {
         inflater.inflate(R.menu.topnav2,menu);
         return true;
     }
+
+    //To insert information into the database
+    //User can also cancel adding
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.confirm:
@@ -134,9 +139,12 @@ public class edit_or_add extends AppCompatActivity  {
                     Database db=new Database(this);
                     boolean add=db.insert(get_title,get_date,get_time,get_des,completed_or_not);
                     if (add){
+                        //intent2 is to set Alarm for this item so that alarm will show one day before the due time
                         Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
+                        //To send the item title to Alarm class
                         PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
                         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                        //To set Alarm show time
                         Calendar calendar = Calendar.getInstance();
                         calendar.set(Calendar.YEAR,yearAlarm);
                         calendar.set(Calendar.MONTH,monthAlarm);
@@ -155,9 +163,7 @@ public class edit_or_add extends AppCompatActivity  {
                     }
                 }
 
-//
-//                Intent intent=new Intent(edit_or_add.this,MainActivity.class);
-//                startActivity(intent);
+
                 break;
             case R.id.cancel:
                 new AlertDialog.Builder(this)

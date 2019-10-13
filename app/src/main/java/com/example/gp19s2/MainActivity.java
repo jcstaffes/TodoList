@@ -41,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
 
-//    private void startAlarm(String t){
-//        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        am.s
-//    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -64,13 +61,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-    public void showList(String a,String List){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(a);
-        builder.setMessage(List);
-        builder.show();
-    }
+    
 
 
 
