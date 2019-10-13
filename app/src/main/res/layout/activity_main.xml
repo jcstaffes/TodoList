@@ -38,10 +38,25 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <com.github.sundeepk.compactcalendarview.CompactCalendarView-->
+    <TextView
+        android:id="@+id/alarm"
+        android:layout_width="421dp"
+        android:layout_height="149dp"
+        android:background="#00897B"
+        android:text="Reminder"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <!--    <com.github.sundeepk.compactcalendarview.CompactCalendarView-->
 <!--        android:id="@+id/compactcalendar_view"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="250dp"-->

@@ -2,6 +2,7 @@ package com.example.gp19s2;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.usage.UsageEvents;
 import android.content.Context;
 import android.content.Intent;
@@ -31,15 +32,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import static android.app.AlarmManager.ELAPSED_REALTIME_WAKEUP;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     Database database;
     CompactCalendarView compactCalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+
 
 //    private void startAlarm(String t){
 //        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -88,6 +94,29 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);
 
+
+
+//        AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);;
+//        Cursor alldaylist=database.getList();
+//        ArrayList<String> tempListday = new ArrayList<>();
+//        ArrayList<String> tempListtime = new ArrayList<>();
+//        while (alldaylist.moveToNext()){
+//            tempListday.add(alldaylist.getString(2));
+//            tempListtime.add(alldaylist.getString(3));
+//        }
+//        Intent alarm = new Intent(MainActivity.this, Calendar.class);
+//        PendingIntent sender = PendingIntent.getBroadcast(
+//                MainActivity.this, 0, alarm, 0);
+//        for (int i=0;i<tempListday.size();i++){
+//            String day=tempListday.get(i).substring(0,2);
+//            String month=tempListday.get(i).substring(3,5);
+//            String year=tempListday.get(i).substring(6);
+//            //String tsStr = "2011-05-09 11:49:45";
+//            String time=tempListtime.get(i);
+//            String str=year+"-"+month+"-"+day+" "+time;
+//            Timestamp ts = Timestamp.valueOf(str);
+//            alarmManager.set(ELAPSED_REALTIME_WAKEUP,ts.getTime(),sender);
+//        }
 
 //        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
 //        compactCalendar.setUseThreeLetterAbbreviation(true);
