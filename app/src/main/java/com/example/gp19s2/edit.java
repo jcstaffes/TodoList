@@ -2,7 +2,10 @@ package com.example.gp19s2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,6 +41,11 @@ public class edit extends AppCompatActivity{
     private String get_time;
     private String get_des;
     private String completed_or_not;
+    public int yearAlarm2;
+    public int monthAlarm2;
+    public int dayAlarm2;
+    public int hourAlarm2;
+    public int minuteAlarm2;
 
 
 
@@ -53,10 +61,15 @@ public class edit extends AppCompatActivity{
         completed=(RadioGroup)findViewById(R.id.COMP2);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
+        yearAlarm2=year;
         final int month =calendar.get(Calendar.MONTH);
+        monthAlarm2=month;
         final int day =calendar.get(Calendar.DAY_OF_MONTH);
+        dayAlarm2=day;
         final int hour=calendar.get(Calendar.HOUR_OF_DAY);
+        hourAlarm2=hour;
         final int minute=calendar.get(Calendar.MINUTE);
+        minuteAlarm2=minute;
         final Date date =calendar.getTime();
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +152,17 @@ public class edit extends AppCompatActivity{
                 }}
                 boolean isUpdate = thisDB.updateData(idToedit,res_title,res_date,res_time,res_des,completed_or_not);
                 if (isUpdate){
+                    Intent intent2 = new Intent(edit.this,Alarm.class);
+                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+                    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    Calendar calendar2 = Calendar.getInstance();
+                    calendar2.set(Calendar.YEAR,yearAlarm2);
+                    calendar2.set(Calendar.MONTH,monthAlarm2);
+                    calendar2.set(Calendar.DAY_OF_MONTH,dayAlarm2-1);
+                    calendar2.set(Calendar.HOUR_OF_DAY,hourAlarm2);
+                    calendar2.set(Calendar.MINUTE,minuteAlarm2);
+                    calendar2.set(Calendar.MILLISECOND,0);
+                    am.set(AlarmManager.RTC_WAKEUP,calendar2.getTimeInMillis(),pi);
                     Intent intent=new Intent(edit.this,List.class);
                     intent.putExtra("Update",1);
                     Toast.makeText(edit.this, "Data updated", Toast.LENGTH_SHORT).show();

@@ -27,6 +27,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
+//alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
+
 public class edit_or_add extends AppCompatActivity  {
     private TextView mTextMessage;
     private EditText titleEdit;
@@ -65,7 +67,7 @@ public class edit_or_add extends AppCompatActivity  {
         final int year =calendar.get(Calendar.YEAR);
         yearAlarm=year;
         final int month =calendar.get(Calendar.MONTH);
-        minuteAlarm=month;
+        monthAlarm=month;
         final int day =calendar.get(Calendar.DAY_OF_MONTH);
         dayAlarm=day;
         final int hour=calendar.get(Calendar.HOUR_OF_DAY);
