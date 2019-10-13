@@ -27,6 +27,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Date;
 
+
+
 public class edit extends AppCompatActivity{
     private TextView mTextMessage;
     private EditText titleEdit;
@@ -48,6 +50,7 @@ public class edit extends AppCompatActivity{
     public int minuteAlarm2;
 
 
+
     /*@author the whole team
     Alarm manager refer to https://www.jianshu.com/p/3c6a71b55c72
     Similiar to edit_or_add
@@ -56,6 +59,8 @@ public class edit extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+
         titleEdit=(EditText)findViewById(R.id.TITLE2);
         dateEdit=(EditText)findViewById(R.id.DATE2);
         timeEdit=(EditText)findViewById(R.id.TIME2);
@@ -155,9 +160,11 @@ public class edit extends AppCompatActivity{
                 }}
                 boolean isUpdate = thisDB.updateData(idToedit,res_title,res_date,res_time,res_des,completed_or_not);
                 if (isUpdate){
-                    Intent intent2 = new Intent(edit.this,Alarm.class);
-                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
-                    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+//                    Intent intent2 = new Intent(edit.this,Alarm.class);
+//                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+//                    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
                     Calendar calendar2 = Calendar.getInstance();
                     calendar2.set(Calendar.YEAR,yearAlarm2);
                     calendar2.set(Calendar.MONTH,monthAlarm2);
@@ -165,6 +172,16 @@ public class edit extends AppCompatActivity{
                     calendar2.set(Calendar.HOUR_OF_DAY,hourAlarm2);
                     calendar2.set(Calendar.MINUTE,minuteAlarm2);
                     calendar2.set(Calendar.MILLISECOND,0);
+
+                    Cursor alarmdaylist=thisDB.getListCurrentDay(get_date);
+                    while (alarmdaylist.moveToNext()){
+                        Alarm.eventAlarm.add(alarmdaylist.getString(1));
+                    }
+
+                    Intent intent2 = new Intent(edit.this,Alarm.class);
+                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+                    AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
                     am.set(AlarmManager.RTC_WAKEUP,calendar2.getTimeInMillis(),pi);
                     Intent intent=new Intent(edit.this,List.class);
                     intent.putExtra("Update",1);

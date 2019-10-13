@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -24,6 +25,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -52,6 +55,8 @@ public class edit_or_add extends AppCompatActivity  {
     public int minuteAlarm;
 
 
+    Database database;
+
 
 
 //To get information from those EditTexts and RadioGroup in the interface
@@ -59,6 +64,8 @@ public class edit_or_add extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_add);
+
+        database = new Database(this);
 
         titleEdit=(EditText)findViewById(R.id.TITLE);
         dateEdit=(EditText)findViewById(R.id.DATE);
@@ -139,12 +146,12 @@ public class edit_or_add extends AppCompatActivity  {
                     Database db=new Database(this);
                     boolean add=db.insert(get_title,get_date,get_time,get_des,completed_or_not);
                     if (add){
-                        //intent2 is to set Alarm for this item so that alarm will show one day before the due time
-                        Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
-                        //To send the item title to Alarm class
-                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
-                        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-                        //To set Alarm show time
+
+//                        Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
+//                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+//                        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+
                         Calendar calendar = Calendar.getInstance();
                         calendar.set(Calendar.YEAR,yearAlarm);
                         calendar.set(Calendar.MONTH,monthAlarm);
@@ -152,6 +159,22 @@ public class edit_or_add extends AppCompatActivity  {
                         calendar.set(Calendar.HOUR_OF_DAY,hourAlarm);
                         calendar.set(Calendar.MINUTE,minuteAlarm);
                         calendar.set(Calendar.MILLISECOND,0);
+
+                        Cursor alarmdaylist=db.getListCurrentDay(get_date);
+                        while (alarmdaylist.moveToNext()){
+                            Alarm.eventAlarm.add(alarmdaylist.getString(1));
+                        }
+
+                        //intent2 is to set Alarm for this item so that alarm will show one day before the due time
+                        Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
+                        //To send the item title to Alarm class
+                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+                        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                        //To set Alarm show time
+//                        Intent intent2 = new Intent(edit_or_add.this,Alarm.class);
+//                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,intent2,0);
+//                        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+
                         am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pi);
                         Intent intent=new Intent(edit_or_add.this,MainActivity.class);
                         intent.putExtra("Insert",1);
