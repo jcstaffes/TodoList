@@ -7,7 +7,7 @@
     <string name="title_item2">item2</string>
     <string name="title_item3">item3</string>
     <string name="title_item4">item4</string>
-    <string name="title_welcome">Welcome! \nThis is a todo list app which has below function: \n1. Adding/deleting an item. \n2. Editing an existing item. \n3. Tracking if an item has been completed. \n4. Calendar support. \n5. List view.</string>
+    <string name="title_welcome">Welcome! \nThis is a todo list app which has below function: \n1. Adding/deleting an item. \n2. Editing an existing item. \n3. Tracking if an item has been completed. \n4. Calendar support. \n5. List view. \n6. message alert one day in advance</string>
     <string name="title_confirm">confirm</string>
     <string name="title_cancel">cancel</string>
     <string name="title_edit">NEW TODO</string>
