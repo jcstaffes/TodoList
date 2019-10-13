@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--written by Jiayi Bian
+    <!--Written by Jiayi Bian
     This interface is a welcome interface which introduce what functions this app has-->
 
     <TextView

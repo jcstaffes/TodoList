@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".edit_or_add">
 <!--    This part of codes refer to https://www.youtube.com/watch?v=vs3YKWPBs3I&t=273s
-written by Jiayi Bian
+Written by Jiayi Bian
 This interface is to add new item, which contains title, date, time, description, completed or not-->
     <LinearLayout
         android:layout_width="match_parent"

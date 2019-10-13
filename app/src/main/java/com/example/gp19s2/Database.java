@@ -11,6 +11,10 @@ import androidx.annotation.Nullable;
 import java.sql.Time;
 import java.util.Date;
 
+ /*Written by Jiayi Bian & Yijian Fan
+This class is to create database and add/delete/update/search items in database
+We use SQLite to maintain the database*/
+
 public class Database extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="todo.db";
     public static final String TABLE_NAME="todo_table";
@@ -37,6 +41,8 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
+    /*To return the row whose ID is required ID*/
     public Cursor search(String a){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res = db.rawQuery("Select * From "+TABLE_NAME+" Where ID = "+ a,null);
@@ -60,6 +66,8 @@ public class Database extends SQLiteOpenHelper {
             return false;
         }
     }
+
+     /*To get the whole database*/
 
     public Cursor getList(){
         SQLiteDatabase db=this.getWritableDatabase();
