@@ -1,40 +1,23 @@
 package com.example.gp19s2;
 
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.usage.UsageEvents;
-import android.content.Context;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
-
-
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
-
+//Go to different activity by click different item
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     Database database;
@@ -61,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-    
+
 
 
 
@@ -78,34 +61,6 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);
-
-
-//        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-//        compactCalendar.setUseThreeLetterAbbreviation(true);
-
-        //Set an event
-        //Todo: read in an event title from database
-//        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
-//        compactCalendar.addEvent(ev1);
-//
-//        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
-//            @Override
-//            public void onDayClick(Date dateClicked) {
-//                Context context = getApplicationContext();
-//
-//                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
-//                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onMonthScroll(Date firstDayOfNewMonth) {
-//                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-//
-//            }
-//        });
         database=new Database(this);
 
     }
