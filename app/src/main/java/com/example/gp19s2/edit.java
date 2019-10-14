@@ -68,15 +68,10 @@ public class edit extends AppCompatActivity{
         completed=(RadioGroup)findViewById(R.id.COMP2);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
-        yearAlarm2=year;
         final int month =calendar.get(Calendar.MONTH);
-        monthAlarm2=month;
         final int day =calendar.get(Calendar.DAY_OF_MONTH);
-        dayAlarm2=day;
         final int hour=calendar.get(Calendar.HOUR_OF_DAY);
-        hourAlarm2=hour;
         final int minute=calendar.get(Calendar.MINUTE);
-        minuteAlarm2=minute;
         final Date date =calendar.getTime();
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +82,9 @@ public class edit extends AppCompatActivity{
                         month=month+1;
                         String date=day+"/"+month+"/"+year;
                         dateEdit.setText(date);
+                        yearAlarm2=year;
+                        monthAlarm2=month;
+                        dayAlarm2=day;
                     }
                 },year,month,day);
                 datePickerDialog.getDatePicker().setMinDate(date.getTime()-(date.getTime()%(24*60*60*1000)));
@@ -101,6 +99,8 @@ public class edit extends AppCompatActivity{
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String time=hour+":"+minute;
                         timeEdit.setText(time);
+                        hourAlarm2=hour;
+                        minuteAlarm2=minute;
                     }
                 },hour,minute,true);
                 timePickerDialog.show();
@@ -164,7 +164,7 @@ public class edit extends AppCompatActivity{
                 if (isUpdate){
                     Calendar calendar2 = Calendar.getInstance();
                     calendar2.set(Calendar.YEAR,yearAlarm2);
-                    calendar2.set(Calendar.MONTH,monthAlarm2);
+                    calendar2.set(Calendar.MONTH,monthAlarm2-1);
                     calendar2.set(Calendar.DAY_OF_MONTH,dayAlarm2-1);
                     calendar2.set(Calendar.HOUR_OF_DAY,hourAlarm2);
                     calendar2.set(Calendar.MINUTE,minuteAlarm2);
