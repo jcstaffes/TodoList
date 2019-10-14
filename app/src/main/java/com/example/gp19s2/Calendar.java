@@ -6,6 +6,8 @@ import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -138,6 +140,8 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
+
+        
     }
 
     @Override

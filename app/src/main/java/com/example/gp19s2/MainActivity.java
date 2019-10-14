@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
 //        AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);;
 //        Cursor alldaylist=database.getList();
 //        ArrayList<String> tempListday = new ArrayList<>();

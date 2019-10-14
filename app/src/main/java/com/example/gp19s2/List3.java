@@ -1,5 +1,7 @@
 package com.example.gp19s2;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -123,6 +125,7 @@ public class List3 extends AppCompatActivity {
                 return true;
             }
         });
+
 
     }
     @Override
