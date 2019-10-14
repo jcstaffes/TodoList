@@ -31,7 +31,7 @@ public class editTest {
 
     @Before
     public void setUp() throws Exception {
-        medit=activityRule.getActivity();
+medit=activityRule.getActivity();
     }
 
     @After
