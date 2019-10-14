@@ -72,15 +72,10 @@ public class edit_or_add extends AppCompatActivity  {
         completed=(RadioGroup)findViewById(R.id.COMP);
         Calendar calendar=Calendar.getInstance();
         final int year =calendar.get(Calendar.YEAR);
-        yearAlarm=year;
         final int month =calendar.get(Calendar.MONTH);
-        monthAlarm=month;
         final int day =calendar.get(Calendar.DAY_OF_MONTH);
-        dayAlarm=day;
         final int hour=calendar.get(Calendar.HOUR_OF_DAY);
-        hourAlarm=hour;
         final int minute=calendar.get(Calendar.MINUTE);
-        minuteAlarm=minute;
         final Date date =calendar.getTime();
         dateEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +86,9 @@ public class edit_or_add extends AppCompatActivity  {
                         month=month+1;
                         String date=day+"/"+month+"/"+year;
                         dateEdit.setText(date);
+                        yearAlarm=year;
+                        monthAlarm=month;
+                        dayAlarm=day;
                     }
                 },year,month,day);
                 datePickerDialog.getDatePicker().setMinDate(date.getTime()-(date.getTime()%(24*60*60*1000)));
@@ -105,6 +103,8 @@ public class edit_or_add extends AppCompatActivity  {
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String time=hour+":"+minute;
                         timeEdit.setText(time);
+                        hourAlarm=hour;
+                        minuteAlarm=minute;
                     }
                 },hour,minute,true);
                 timePickerDialog.show();
@@ -149,7 +149,7 @@ public class edit_or_add extends AppCompatActivity  {
                     if (add){
                         Calendar calendar = Calendar.getInstance();
                         calendar.set(Calendar.YEAR,yearAlarm);
-                        calendar.set(Calendar.MONTH,monthAlarm);
+                        calendar.set(Calendar.MONTH,monthAlarm-1);
                         calendar.set(Calendar.DAY_OF_MONTH,dayAlarm-1);
                         calendar.set(Calendar.HOUR_OF_DAY,hourAlarm);
                         calendar.set(Calendar.MINUTE,minuteAlarm);
@@ -162,6 +162,7 @@ public class edit_or_add extends AppCompatActivity  {
                         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
                         //To set Alarm show time
                         am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pi);
+                        System.out.println(calendar.getTimeInMillis());
                         Intent intent=new Intent(edit_or_add.this,MainActivity.class);
                         intent.putExtra("Insert",1);
                         Toast.makeText(edit_or_add.this, "data inserted", Toast.LENGTH_SHORT).show();
