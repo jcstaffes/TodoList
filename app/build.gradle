@@ -36,4 +36,5 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.1.0'
     annotationProcessor 'androidx.room:room-compiler:2.1.0'
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
 }
