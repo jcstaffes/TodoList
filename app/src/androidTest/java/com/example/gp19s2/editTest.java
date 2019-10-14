@@ -91,7 +91,62 @@ public class editTest {
 
 
     }
+    @Test
+    public void testDelete(){
+        String t="";
+        Context context=medit.getApplicationContext();
+        Database thisDB = new Database(context);
+        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
+        thisDB.insert("Test11","10/12/2019","3:03","have a test!",null);
+        thisDB.deleteData("01");
+        Cursor c=thisDB.getList();
+        while (c.moveToNext()){
+            t=c.getString(1);
+        }
+        assertEquals(t,"Test11");
+    }
 
+//    @Test
+//    public void testUpdate(){
+//        String t="";
+//        Context context=medit.getApplicationContext();
+//        Database thisDB = new Database(context);
+//        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
+//        thisDB.updateData("01","Edit","10/11/2019","3:03","have a test!",null);
+//        Cursor c=thisDB.getList();
+//        while (c.moveToNext()){
+//            t=c.getString(1);
+//        }
+//        assertEquals(t,"Edit");
+//    }
+    @Test
+    public void testGetCurrentDayList(){
+        String t="";
+        Context context=medit.getApplicationContext();
+        Database thisDB = new Database(context);
+        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
+        thisDB.insert("Edit","10/11/2019","3:03","have a test!",null);
+        thisDB.insert("Add","10/12/2019","3:03","have a test!",null);
+        Cursor c=thisDB.getListCurrentDay("10/12/2019");
+        while (c.moveToNext()){
+            t=c.getString(1);
+        }
+        assertEquals(t,"Add");
+    }
+//    @Test
+//    public void testSearch(){
+//        String t="";
+//        Context context=medit.getApplicationContext();
+//        Database thisDB = new Database(context);
+//        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
+//        thisDB.insert("Edit","10/11/2019","3:03","have a test!",null);
+//        thisDB.insert("Add","10/12/2019","3:03","have a test!",null);
+//        Cursor c=thisDB.search("03");
+//        while (c.moveToNext()){
+//            t=c.getString(1);
+//        }
+//        assertEquals(t,"Add");
+//    }
     @Test
     public void testIntent() {
 

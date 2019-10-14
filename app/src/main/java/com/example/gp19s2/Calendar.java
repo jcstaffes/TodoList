@@ -94,13 +94,17 @@ public class Calendar extends AppCompatActivity {
 
         database = new Database(this);
 
-
+/*
+@author Jiamin Dai
+Get all the data from the database and extract the date from the data
+Then add the highlight event to the calendar
+The time format of event is Timestamp
+ */
         alldaylist=database.getList();
         ArrayList<String> tempList = new ArrayList<>();
         while (alldaylist.moveToNext()){
             tempList.add(alldaylist.getString(2));
         }
-
         for (int i=0;i<tempList.size();i++){
             String day=tempList.get(i).substring(0,2);
             String month=tempList.get(i).substring(3,5);
@@ -114,7 +118,9 @@ public class Calendar extends AppCompatActivity {
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
 
             /*
-            Set click to intent to event detail page
+            @author Jiamin Dai
+            Set click to intent to the clicked day event detail page
+            Get the detail from the database
              */
             @Override
             public void onDayClick(Date dateClicked) {
@@ -165,7 +171,9 @@ public class Calendar extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+/*
+format the month
+ */
     public String changeMonth(String month){
         String m=null;
         switch (month){

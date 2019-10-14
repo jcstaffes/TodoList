@@ -13,7 +13,10 @@ import java.util.Calendar;
 import static android.content.Context.ALARM_SERVICE;
 
 /*@author Jiayi Bian
-To set alarm action*/
+To set alarm action
+The static String @event is called in the @edit_or_add class and @edit class
+To show the title of the alarm event
+*/
 public class Alarm extends BroadcastReceiver {
     public static String event;
 

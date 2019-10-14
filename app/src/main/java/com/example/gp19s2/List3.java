@@ -28,7 +28,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
+/*
+@author Jiayi Bian &Jiamin Dai
+When user select the date on the calendar
+Then the list of the selected day event will show up
+@currentdaylist is a static Cursor call from the Calendar class
+ */
 public class List3 extends AppCompatActivity {
     ListView listView;
     private TextView mTextMessage;
@@ -72,7 +77,6 @@ public class List3 extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         ArrayList<String> tempList = new ArrayList<>();
         Cursor list = Calendar.currentdaylist;
-//        Cursor list = database.getList();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         if (list.getCount()==0){
