@@ -18,5 +18,9 @@ public class AndroidUnitTest {
     public void testCalendar() {
         String month = "Jan";
         assertEquals("01", c.changeMonth(month));
+        String month2 = "Mar";
+        assertEquals("03", c.changeMonth(month2));
+        String month3 = "Jul";
+        assertEquals("07", c.changeMonth(month3));
     }
 }
