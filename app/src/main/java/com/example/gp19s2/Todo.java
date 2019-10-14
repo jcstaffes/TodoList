@@ -16,12 +16,14 @@ public class Todo {
     private String time;
 
     private String date;
+    private String completed_or_not;
 
-    public Todo(String title, String description, String date, String time) {
+    public Todo(String title, String description, String date, String time, String completed_or_not) {
         this.title = title;
         this.description = description;
         this.time = time;
         this.date = date;
+        this.completed_or_not = completed_or_not;
     }
 
     public int getEid() {
@@ -44,6 +46,11 @@ public class Todo {
         return description;
     }
 
+    public String getCompleted_or_not() {return completed_or_not;
+    }
+
+
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -63,5 +70,9 @@ public class Todo {
     public void setTime(String time) {
         this.time = time;
     }
+    public void setCompleted_or_not(String completed_or_not) {
+        this.completed_or_not = completed_or_not;
+    }
+
 
 }
