@@ -77,58 +77,6 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(false);
         actionbar.setTitle(null);
-
-
-
-
-//        AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);;
-//        Cursor alldaylist=database.getList();
-//        ArrayList<String> tempListday = new ArrayList<>();
-//        ArrayList<String> tempListtime = new ArrayList<>();
-//        while (alldaylist.moveToNext()){
-//            tempListday.add(alldaylist.getString(2));
-//            tempListtime.add(alldaylist.getString(3));
-//        }
-//        Intent alarm = new Intent(MainActivity.this, Calendar.class);
-//        PendingIntent sender = PendingIntent.getBroadcast(
-//                MainActivity.this, 0, alarm, 0);
-//        for (int i=0;i<tempListday.size();i++){
-//            String day=tempListday.get(i).substring(0,2);
-//            String month=tempListday.get(i).substring(3,5);
-//            String year=tempListday.get(i).substring(6);
-//            //String tsStr = "2011-05-09 11:49:45";
-//            String time=tempListtime.get(i);
-//            String str=year+"-"+month+"-"+day+" "+time;
-//            Timestamp ts = Timestamp.valueOf(str);
-//            alarmManager.set(ELAPSED_REALTIME_WAKEUP,ts.getTime(),sender);
-//        }
-
-//        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-//        compactCalendar.setUseThreeLetterAbbreviation(true);
-
-        //Set an event
-        //Todo: read in an event title from database
-//        Event ev1 = new Event(Color.RED, 1569910170L, "National Day");
-//        compactCalendar.addEvent(ev1);
-//
-//        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
-//            @Override
-//            public void onDayClick(Date dateClicked) {
-//                Context context = getApplicationContext();
-//
-//                if(dateClicked.toString().compareTo("Tue Oct 01 06:09:30 AST 2019") == 0){
-//                    Toast.makeText(context, "National Day", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(context, "No Events for that day", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onMonthScroll(Date firstDayOfNewMonth) {
-//                actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-//
-//            }
-//        });
         database=new Database(this);
 
     }

@@ -112,7 +112,7 @@ public class editTest {
 //        Context context=medit.getApplicationContext();
 //        Database thisDB = new Database(context);
 //        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
-//        thisDB.updateData("01","Edit","10/11/2019","3:03","have a test!",null);
+//        thisDB.updateData("1","Edit","10/11/2019","3:03","have a test!",null);
 //        Cursor c=thisDB.getList();
 //        while (c.moveToNext()){
 //            t=c.getString(1);
@@ -141,7 +141,7 @@ public class editTest {
 //        thisDB.insert("Test","10/11/2019","3:03","have a test!",null);
 //        thisDB.insert("Edit","10/11/2019","3:03","have a test!",null);
 //        thisDB.insert("Add","10/12/2019","3:03","have a test!",null);
-//        Cursor c=thisDB.search("03");
+//        Cursor c=thisDB.search("3");
 //        while (c.moveToNext()){
 //            t=c.getString(1);
 //        }
